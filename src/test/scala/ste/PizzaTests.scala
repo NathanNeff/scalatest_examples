@@ -28,5 +28,7 @@ class PizzaTests extends FunSuite with BeforeAndAfter {
             pizza.boom
         }
         assert (thrown.getMessage === "Boom!")
+        // Another way to test an exception
+        intercept[Exception] { pizza.boom }
     }
 }
