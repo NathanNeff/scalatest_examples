@@ -15,6 +15,12 @@ class PizzaTests extends FunSuite with BeforeAndAfter {
         assert(pizza.getToppings.size == 0)
     }
 
+    test("new Pizza has zero toppings, you can do this, too") {
+        assertResult(0) {
+            pizza.getToppings.size
+        }
+    }
+
     test("test pizza pricing") (pending)
 
     test("Boom should throw an exception") {
