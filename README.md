@@ -1,6 +1,7 @@
-# ScalaTest Examples
+# Scala and ScalaTest Examples
 
-From "Scala Cookbook"
+Examples from "Scala Cookbook", and just plain Scala examples
+that I've seen in various places
 
 # SBT Notes
 
@@ -28,6 +29,11 @@ or
   sbt> ~ test-only SomeTest
 
 
+# Scala Control Structures
+
+The details of How for loops are translated are in the Scala lang. spec.
+Scala cookbook has a synposis in Chapter 3.1
+    
 # TODO
 
 * TODO How to add -deprecation to the options when running sbt from the
