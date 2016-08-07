@@ -28,6 +28,20 @@ or
 
   sbt> ~ test-only SomeTest
 
+## Assert that exceptions are thrown
+
+  test("something") {
+    intercept[SomeException] {
+      some code here
+    }
+  }
+
+  There's another way described here:
+  http://www.scalatest.org/user_guide/using_assertions
+
+## Mark tests as "pending"
+
+  test("Do something later") (pending)
 
 # Scala Control Structures
 
@@ -44,7 +58,6 @@ Scala cookbook has a synposis in Chapter 3.1
            
 * TODO How to run only certain tests from the commandline?
 
-* TODO How to properly assert that no exceptions are thrown?
 
 * TODO How to run certain tests within a class or with "tags" from within sbt?
 
