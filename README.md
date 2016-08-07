@@ -45,8 +45,8 @@ or
 
 # Scala Control Structures
 
-The details of How for loops are translated are in the Scala lang. spec.
-Scala cookbook has a synposis in Chapter 3.1
+The details of How for loops are translated are in the Scala lang.  spec.  Scala
+cookbook has a synposis in Chapter 3.1
     
 # TODO
 
@@ -58,8 +58,9 @@ Scala cookbook has a synposis in Chapter 3.1
            
 * TODO How to run only certain tests from the commandline?
 
-
 * TODO How to run certain tests within a class or with "tags" from within sbt?
 
 * TODO How to run only incremental tests (i.e. tests that have changed
        from the last run?
+
+
