@@ -52,13 +52,12 @@ class ListImplementationsTests extends FunSuite {
     assert(two == li.init(three))
   }
 
-  ignore("concat function on list") {
-    // assert(List(1,1,2) == li.concat(list1, list2))
-    // assert(List(1,2,1,2,3) == li.concat(list2, list3))
-    // assert(List(1,2) == li.concat(List(), list2))
-    // assert(list2 == li.concat(list2, List()))
+  test("concat function on list") {
+    assert(List() === li.concat(List(), List()))
+    assert(one === li.concat(List(), one))
+    assert(one === li.concat(one, List()))
+    assert(three === li.concat(List(1), List(2,3)))
   }
-  
 }
 
 

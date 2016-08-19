@@ -28,4 +28,12 @@ object ListImplementations {
     }
   }
 
+  // Must be careful here, because it needs to be right-associative?
+  // Complexity of concat will be a call for each element of X |xs| = mathematical notation
+  // to indicate size
+  def concat[T](xs:List[T], ys: List[T]): List[T] = xs match {
+    case List() => ys
+    case z :: zs => z :: concat(zs, ys)
+  }
+
 }
