@@ -42,9 +42,14 @@ class ListImplementationsTests extends FunSuite {
     assert(result.tail.tail.head === 'c')
   }
 
-  ignore("init function on list") {
-    // assert(list1 == li.init(list2))
-    // assert(list2 == li.init(list3))
+
+  test("init function") {
+    intercept[Error] {
+      assert(List() == li.init(List()))
+    }
+    assert(List() == li.init(one))
+    assert(one == li.init(two))
+    assert(two == li.init(three))
   }
 
   ignore("concat function on list") {
