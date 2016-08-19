@@ -6,6 +6,8 @@ class ListImplementationsTests extends FunSuite {
   val empty = List()
   val one = List(1)
   val two = List(1,2)
+  val three = List(1,2,3)
+
   test("Empty List") {
     val thrown = intercept[Error] {
       li.last(empty)
@@ -19,7 +21,39 @@ class ListImplementationsTests extends FunSuite {
 
   test("List w/more than one item") {
     assert(li.last(two) === 2)
+    assert(2 === li.last(two))
+    assert(3 === li.last(three))
   }
+
+
+  ignore("Test simple count these") {
+    val ret = li.countThese(List('a'))
+    assert(ret.head == ('a', 1))
+
+    val ret2 = li.countThese(List('b', 'a', 'a'))
+    assert(ret2.head == ('b', 1))
+    assert(ret2.tail.head == ('a', 2))
+  }
+
+  test("Even simpler insert into list") {
+    val result = li.insertSorted('b', List('a','c'))
+    assert(result.head === 'a')
+    assert(result.tail.head === 'b')
+    assert(result.tail.tail.head === 'c')
+  }
+
+  ignore("init function on list") {
+    // assert(list1 == li.init(list2))
+    // assert(list2 == li.init(list3))
+  }
+
+  ignore("concat function on list") {
+    // assert(List(1,1,2) == li.concat(list1, list2))
+    // assert(List(1,2,1,2,3) == li.concat(list2, list3))
+    // assert(List(1,2) == li.concat(List(), list2))
+    // assert(list2 == li.concat(list2, List()))
+  }
+  
 }
 
 
