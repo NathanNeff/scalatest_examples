@@ -36,4 +36,33 @@ object ListImplementations {
     case z :: zs => z :: concat(zs, ys)
   }
 
+  // Append operator ++ used.  Can we do better than this w/regard to
+  // complexity?
+  def reverse[T](xs:List[T]): List[T] = xs match {
+    case List() => xs
+    case z :: zs => reverse(zs) ++ List(z)
+  }
+
+  def removeAt[T](xs:List[T], index: Int): List[T] = (xs take index) ::: (xs drop index + 1)
+
+  def mergeSort(xs: List[Int]): List[Int] = {
+    val n = xs.length / 2
+    if (n == 0) xs
+    else {
+      def merge(xs: List[Int], ys: List[Int]): List[Int] = 
+        xs match {
+          case Nil => ys
+          case x1 :: xs1 => 
+            ys match {
+              case Nil => xs
+              case y1 :: ys1 =>
+                if (x1 < y1) x1 :: merge(xs1, ys)
+                else y1 :: merge(xs, ys1)
+            }
+        }
+      val (fst, snd) = xs splitAt n
+      merge(mergeSort(fst), mergeSort(snd))
+    }
+  }
+
 }

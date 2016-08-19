@@ -58,6 +58,23 @@ class ListImplementationsTests extends FunSuite {
     assert(one === li.concat(one, List()))
     assert(three === li.concat(List(1), List(2,3)))
   }
+
+  test("reverse") {
+    assert(li.reverse(two) === List(2,1))
+    assert(li.reverse(three) === List(3, 2,1))
+  }
+
+  test("removeAt") {
+    assert(li.removeAt(two, 1) === one)
+  }
+
+  test("Test MergeSort") {
+    assert(li.mergeSort(List(2,1,1)) === List(1, 1, 2))
+    assert(li.mergeSort(two) === two)
+    assert(li.mergeSort(List(2,1,3)) === List(1, 2, 3))
+    assert(li.mergeSort(List(1)) === List(1))
+    assert(li.mergeSort(List()) === List())
+  }
 }
 
 
