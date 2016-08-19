@@ -39,6 +39,8 @@ or
   There's another way described here:
   http://www.scalatest.org/user_guide/using_assertions
 
+  See ShouldFail.scala
+
 ## Mark tests as "pending"
 
   test("Do something later") (pending)
@@ -48,6 +50,9 @@ or
 The details of How for loops are translated are in the Scala lang.  spec.  Scala
 cookbook has a synposis in Chapter 3.1
     
+# Finally!  I understand map{ case } vs. map()
+
+VectorTests.scala has an example
 # TODO
 
 * TODO How to add -deprecation to the options when running sbt from the
@@ -63,4 +68,21 @@ cookbook has a synposis in Chapter 3.1
 * TODO How to run only incremental tests (i.e. tests that have changed
        from the last run?
 
+* TODO What is the difference between func(arg1, arg2) and func(arg1)(arg2)
 
+* TODO How to print something from within a scalatest?
+
+* TODO What does the notation "+T1" mean in this definition?
+  -- Where can I find a summary of these notations?
+
+```
+case class Tuple2[T1, T2](_1: +T1, _2: +T2)
+```
+
+* TODO Why does Spark use reduceByKey instead of foldByKey?
+  -- For example, if there's only one value for a key, then how does
+     it get v2 in the following code?
+
+```
+counts = blah.reduceByKey(_+_)
+```
