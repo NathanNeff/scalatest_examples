@@ -65,4 +65,22 @@ object ListImplementations {
     }
   }
 
+  // TODO: Parameterize mergeSort in ListImplementations to use
+  // a providable "merge" function (See README.md)
+  def mergeSort2(xs: List[Int])(lt: (Int, Int) => Boolean): List[Int] = {
+    val n = xs.length / 2
+    if (n == 0) xs
+    else {
+      def merge(xs: List[Int], ys: List[Int]): List[Int] = (xs, ys) match {
+          case (Nil, ys) => ys
+          case (xs, Nil) => xs
+          case (x1 :: xs1, y1 :: ys1) =>
+                if (lt(x1, y1)) x1 :: merge(xs1, ys)
+                else y1 :: merge(xs, ys1)
+        }
+      val (fst, snd) = xs splitAt n
+      merge(mergeSort2(fst)(lt), mergeSort2(snd)(lt))
+    }
+  }
+
 }

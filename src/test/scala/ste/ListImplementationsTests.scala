@@ -75,6 +75,23 @@ class ListImplementationsTests extends FunSuite {
     assert(li.mergeSort(List(1)) === List(1))
     assert(li.mergeSort(List()) === List())
   }
+  // Uses a function provided, in order to sort things
+  test("Test MergeSort2") {
+    def sortAsc(x:Int, y:Int):Boolean = x < y
+    def sortDesc(x:Int, y:Int):Boolean = x > y
+
+    assert(li.mergeSort2(List(2,1,1))(sortAsc) === List(1, 1, 2))
+    assert(li.mergeSort2(List(2,1,1))(sortDesc) === List(2, 1, 1))
+
+    assert(li.mergeSort2(two)(sortAsc) === two)
+    assert(li.mergeSort2(List(2,1,3))(sortAsc) === List(1, 2, 3))
+
+    assert(li.mergeSort2(List(1))(sortAsc) === List(1))
+    assert(li.mergeSort2(List(1))(sortDesc) === List(1))
+
+    assert(li.mergeSort2(List())(sortAsc) === List())
+    assert(li.mergeSort2(List())(sortDesc) === List())
+  }
 }
 
 

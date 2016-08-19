@@ -18,6 +18,10 @@ Subsequently, you can use
 to remove the option from sbt's running of subsequent tests. See
 http://stackoverflow.com/questions/9578521/scala-sbt-how-to-re-run-with-deprecation
 
+## Function Parameterization
+
+Is shown in ListImplementations.scala
+
 ## Selectively run tests in sbt
 
 To run the tests in only the "SomeTest" class, use:
@@ -86,3 +90,7 @@ case class Tuple2[T1, T2](_1: +T1, _2: +T2)
 ```
 counts = blah.reduceByKey(_+_)
 ```
+
+* TODO Replace mergeSort in ListImplementations with a mergeSort that
+  takes a separate "merge" function.  Currently, I have a corny mergeSort2
+  implementation
