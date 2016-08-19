@@ -7,6 +7,7 @@ class ListImplementationsTests extends FunSuite {
   val one = List(1)
   val two = List(1,2)
   val three = List(1,2,3)
+  val fruits = List("strawberry", "peach", "apple")
 
   test("Empty List") {
     val thrown = intercept[Error] {
@@ -80,17 +81,20 @@ class ListImplementationsTests extends FunSuite {
     def sortAsc(x:Int, y:Int):Boolean = x < y
     def sortDesc(x:Int, y:Int):Boolean = x > y
 
-    assert(li.mergeSort2(List(2,1,1))(sortAsc) === List(1, 1, 2))
-    assert(li.mergeSort2(List(2,1,1))(sortDesc) === List(2, 1, 1))
+    assert(li.mergeSort2(List(2,1,1), sortAsc) === List(1, 1, 2))
+    assert(li.mergeSort2(List(2,1,1), sortDesc) === List(2, 1, 1))
 
-    assert(li.mergeSort2(two)(sortAsc) === two)
-    assert(li.mergeSort2(List(2,1,3))(sortAsc) === List(1, 2, 3))
+    assert(li.mergeSort2(two, sortAsc) === two)
+    assert(li.mergeSort2(List(2,1,3), sortAsc) === List(1, 2, 3))
 
-    assert(li.mergeSort2(List(1))(sortAsc) === List(1))
-    assert(li.mergeSort2(List(1))(sortDesc) === List(1))
+    assert(li.mergeSort2(List(1), sortAsc) === List(1))
+    assert(li.mergeSort2(List(1), sortDesc) === List(1))
 
-    assert(li.mergeSort2(List())(sortAsc) === List())
-    assert(li.mergeSort2(List())(sortDesc) === List())
+    assert(li.mergeSort2(List(), sortAsc) === List())
+    assert(li.mergeSort2(List(), sortDesc) === List())
+
+    assert(li.mergeSort2(fruits, (x:String, y:String) => x.compareTo(y) < 0) 
+      === List("apple", "peach", "strawberry"))
   }
 }
 
