@@ -1,6 +1,7 @@
 package ste
 
 import org.scalatest._
+
 class ListImplementationsTests extends FunSuite {
   val li = ListImplementations
   val empty = List()
@@ -95,6 +96,28 @@ class ListImplementationsTests extends FunSuite {
 
     assert(li.mergeSort2(fruits, (x:String, y:String) => x.compareTo(y) < 0) 
       === List("apple", "peach", "strawberry"))
+  }
+
+  test("Test MergeSort3") {
+    def sortAsc(x:Int, y:Int):Boolean = x < y
+    def sortDesc(x:Int, y:Int):Boolean = x > y
+
+    assert(li.mergeSort3(List(2,1,1))(Ordering[Int]) === List(1, 1, 2))
+
+    // Implicits help condense based on demanded type
+    assert(li.mergeSort3(two) === two)
+    assert(li.mergeSort3(two)(Ordering.Int) === two)
+
+    assert(li.mergeSort3(List(2,1,3))(Ordering.Int) === List(1, 2, 3))
+
+    assert(li.mergeSort3(List(1))(Ordering.Int) === List(1))
+    assert(li.mergeSort3(List(1))(Ordering.Int) === List(1))
+
+    assert(li.mergeSort3(List()) === List())
+    assert(li.mergeSort3(List()) === List())
+
+    assert(li.mergeSort3(fruits)(Ordering.String) === List("apple", "peach", "strawberry"))
+    assert(li.mergeSort3(fruits) === List("apple", "peach", "strawberry"))
   }
 }
 

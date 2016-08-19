@@ -82,5 +82,23 @@ object ListImplementations {
       merge(mergeSort2(fst, lt), mergeSort2(snd, lt))
     }
   }
+  // mergeSort3 uses the Ordering object, (and uses separate
+  // function passed as param to allow currying
+  // Cool! implicit!
+  def mergeSort3[T](xs: List[T])(implicit ord: Ordering[T]): List[T] = {
+    val n = xs.length / 2
+    if (n == 0) xs
+    else {
+      def merge(xs: List[T], ys: List[T]): List[T] = (xs, ys) match {
+        case (Nil, ys) => ys
+        case (xs, Nil) => xs
+        case (x1 :: xs1, y1 :: ys1) =>
+          if (ord.lt(x1, y1)) x1 :: merge(xs1, ys)
+          else y1 :: merge(xs, ys1)
+      }
+      val (fst, snd) = xs splitAt n
+      merge(mergeSort3(fst)(ord), mergeSort3(snd)(ord))
+    }
+  }
 
 }
