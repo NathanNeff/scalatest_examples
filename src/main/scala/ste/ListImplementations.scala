@@ -101,4 +101,20 @@ object ListImplementations {
     }
   }
 
+  def scaleList(xs: List[Double], factor: Double): List[Double] = xs match {
+    case Nil => xs
+    case y :: ys => y * factor :: scaleList(ys, factor)
+  }
+
+  def map(someList: List[Int])(f: Int => Int): List[Int] = someList match {
+    case Nil => someList
+    case x :: xs => f(x) :: map(xs)(f)
+  }
+
+  def filter[T](someList: List[T])(f: T => Boolean): List[T] = 
+    someList match {
+      case Nil => someList
+      case x :: xs => if (f(x)) x :: filter(xs)(f) else filter(xs)(f)
+    }
+
 }

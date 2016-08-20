@@ -6,6 +6,7 @@ class ListImplementationsTests extends FunSuite {
   val li = ListImplementations
   val empty = List()
   val one = List(1)
+  val oned = List(1.0)
   val two = List(1,2)
   val three = List(1,2,3)
   val fruits = List("strawberry", "peach", "apple")
@@ -118,6 +119,22 @@ class ListImplementationsTests extends FunSuite {
 
     assert(li.mergeSort3(fruits)(Ordering.String) === List("apple", "peach", "strawberry"))
     assert(li.mergeSort3(fruits) === List("apple", "peach", "strawberry"))
+  }
+
+  test("Scale List function") {
+    assert(List(2.0) == li.scaleList(oned, 2.0))
+  }
+
+  test("Map function") {
+    assert(li.map(List())(x => x * 2) === List())
+    assert(li.map(one)(x => x * 2) == List(2))
+    assert(li.map(two)(x => x * x) == List(1, 4))
+  }
+
+  test("Filter function") {
+    assert(li.filter(List(1,2,3))(x => x == 1) == List(1))
+    assert(li.filter(List(1,2,3))(x => x == 2) == List(2))
+    assert(li.filter(List(1,2,3))(x => x >= 2) == List(2, 3))
   }
 }
 
