@@ -2,6 +2,9 @@ package ste
 import org.scalatest.FunSuite
 class ListTests extends FunSuite {
 
+  val ab = List("a", "b")
+  val de = List("d", "e")
+
   val list2 = List(1,2)
   val list3 = list2 :+ 3
 
@@ -41,11 +44,21 @@ class ListTests extends FunSuite {
     assert(!list2.contains(3))
   }
 
+  test("concatentation") {
+    assert(ab ::: de === List("a", "b", "d", "e"))
+  }
+
+  test("partition") {
+    val lst = (ab ::: de).partition(x => x < "d")
+    assert(lst._1 === List("a", "b"))
+    assert(lst._2 === List("d", "e"))
+  }
 
   test("List init") {
     // Returns all elems except last
     assert(list3.init === list2)
   }
+
   test("List take") {
     assert(list2.take(1) == List(1))
     assert(list2.take(2) == List(1,2))
@@ -78,7 +91,6 @@ class ListTests extends FunSuite {
     assert(list.tail.tail == Nil)
     assert(list2.tail.tail == Nil)
   }
-
 
   test("No such element exception thrown") {
     val list = 2 :: 1 :: Nil
